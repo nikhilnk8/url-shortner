@@ -1,0 +1,18 @@
+.urls {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.urls > form {
+  /* box-shadow: 0 0 15px 2px darkgray; */
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  height: 150px;
+  justify-content: space-between;
+}
+.urls > form > Button {
+  width: 50px;
+  align-self: center;
+}
