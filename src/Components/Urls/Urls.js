@@ -4,7 +4,7 @@ import { useJwt } from "react-jwt";
 import UrlCard from "../UrlCard/UrlCard";
 import "./Urls.css";
 import { Button } from "@material-ui/core";
-import { Form, Modal, Input } from "antd";
+import { Form, Modal, Input, message } from "antd";
 import * as ANTD from "antd";
 import "antd/dist/antd.css";
 
@@ -46,6 +46,9 @@ function Urls() {
         authorization: `Bearer ${localStorage.token}`,
       },
     });
+    response.status == 200
+      ? message.success("URL Added Successfully")
+      : message.error("Something went wrong");
     onFormSubmit();
     console.log(response.data);
   };
