@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { api_login, get_user_posts } from "../../store/api";
 import "./Login.css";
+import { Button } from "antd";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -8,6 +9,8 @@ function Login() {
 
   const genToken = async () => {
     const got_token = await api_login(username, password);
+    window.location.reload();
+
     console.log(got_token);
   };
   return (
@@ -25,9 +28,14 @@ function Login() {
           value={password}
           type="password"
         />
-        <input type="button" value="login" onClick={genToken} />
+        <Button
+          type="primary"
+          style={{ width: "20%", alignSelf: "center", marginBottom: 10 }}
+          onClick={genToken}
+        >
+          Log In
+        </Button>
       </div>
-      <button onClick={get_user_posts}>get urls</button>
     </div>
   );
 }

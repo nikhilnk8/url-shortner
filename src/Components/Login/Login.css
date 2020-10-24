@@ -6,7 +6,7 @@
   /* border: 1px solid darkblue; */
   border-radius: 12px;
   /* padding: 20px; */
-  box-shadow: 0 2px 10px 1px gray;
+  box-shadow: 0 5px 10px 1px rgb(184, 184, 184);
 }
 
 .login__form > input {

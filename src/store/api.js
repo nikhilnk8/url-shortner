@@ -64,7 +64,7 @@ export const deleteUrl = async (urlId) => {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
     // console.log(response.data);
-    return response.data;
+    return response;
   } catch (error) {
     console.log(error.message);
   }

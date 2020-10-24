@@ -16,3 +16,21 @@
   width: 50px;
   align-self: center;
 }
+
+.urls__form {
+  /* box-shadow: 0 0 15px 2px darkgray; */
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  height: 150px;
+  justify-content: space-between;
+}
+.urls__form > Button {
+  width: 50px;
+  align-self: center;
+  margin-top: 20px;
+}
+
+.urls__formInputLabel {
+  margin: 10px 0;
+}

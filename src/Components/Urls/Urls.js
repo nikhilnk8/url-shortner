@@ -3,13 +3,19 @@ import React, { useEffect, useState } from "react";
 import { useJwt } from "react-jwt";
 import UrlCard from "../UrlCard/UrlCard";
 import "./Urls.css";
-import { FormControl, InputLabel, Input, Button } from "@material-ui/core";
-import Modal from "react-bootstrap/Modal";
+import { Button } from "@material-ui/core";
+import { Form, Modal, Input } from "antd";
+import * as ANTD from "antd";
+import "antd/dist/antd.css";
 
 function Urls() {
   const [urls, setUrls] = useState([]);
+  const [modal, setModal] = useState(false);
   const { decodedToken } = useJwt(localStorage.token);
   const userId = decodedToken !== null ? decodedToken.userId : "";
+
+  const [NewURLForm] = ANTD.Form.useForm();
+
   useEffect(() => {
     getUrls();
   }, [userId]);
@@ -20,29 +26,77 @@ function Urls() {
       url: "http://localhost:5000/getUrls",
       data: { user: userId },
     }).then(({ data }) => {
+      console.log(data);
       setUrls(data);
-      // console.log(data);
     });
   };
 
+  const onFormSubmit = () => {
+    getUrls();
+    setModal(false);
+  };
+
+  const AddUrl = async (values) => {
+    let body = { user: userId, ...values, createdOn: Date.now() };
+    const response = await Axios({
+      method: "post",
+      url: "http://localhost:5000/createUrl",
+      data: { user: userId, ...body },
+      headers: {
+        authorization: `Bearer ${localStorage.token}`,
+      },
+    });
+    onFormSubmit();
+    console.log(response.data);
+  };
+
+  const GeneralModal = () => {
+    return (
+      <Modal
+        title="Add New URL"
+        visible={modal}
+        onCancel={() => setModal(false)}
+        footer={true}
+      >
+        <Form
+          name="basic"
+          initialValues={{ remember: true }}
+          onFinish={AddUrl}
+          form={NewURLForm}
+        >
+          <Form.Item
+            label="Name"
+            name="name"
+            rules={[{ required: true, message: " " }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="URL"
+            name="orignal"
+            rules={[{ required: true, message: " " }]}
+          >
+            <Input />
+          </Form.Item>
+          <ANTD.Button type="primary" htmlType="submit">
+            Submit
+          </ANTD.Button>
+        </Form>
+      </Modal>
+    );
+  };
   return (
     <div className="urls">
-      <Modal show centered>
-        <form>
-          <InputLabel htmlFor="my-input">Add new URL</InputLabel>
-          <FormControl>
-            <InputLabel htmlFor="my-input">Name</InputLabel>
-            <Input id="my-input" aria-describedby="my-helper-text" required />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-input">URL</InputLabel>
-            <Input id="my-input" aria-describedby="my-helper-text" required />
-          </FormControl>
-          <Button variant="contained" color="primary" type="submit">
-            Add
-          </Button>
-        </form>
-      </Modal>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => setModal(true)}
+        style={{ marginTop: 20 }}
+      >
+        Add New URL
+      </Button>
+      <GeneralModal />
 
       {urls.length > 0 ? (
         urls.map((url) => {
@@ -53,11 +107,12 @@ function Urls() {
               short={url.short}
               _id={url._id}
               onRefresh={getUrls}
+              name={url.name}
             />
           );
         })
       ) : (
-        <></>
+        <p>Loading...</p>
       )}
     </div>
   );
