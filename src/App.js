@@ -4,6 +4,7 @@ import Login from "./Components/Login/Login";
 import Urls from "./Components/Urls/Urls";
 import { TokenContext } from "./Context/TokenContext";
 import { Button } from "antd";
+import Home from "./Components/Home/Home";
 
 function App() {
   const [decodedToken] = useContext(TokenContext);
@@ -30,7 +31,7 @@ function App() {
           )}
         </div>
       </header>
-      {localStorage.getItem("token") ? <Urls /> : <Login />}
+      <Home />
     </div>
   );
 }

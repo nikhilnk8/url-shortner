@@ -7,7 +7,7 @@ export const api_login = async (username, password) => {
     console.log(password);
     const response = await axios({
       method: "POST",
-      url: "http://192.168.1.103:5000/auth/login",
+      url: "http://localhost:5000/auth/login",
       data: { username: username, password: password },
     });
     console.log(response.data);
