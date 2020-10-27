@@ -11,7 +11,7 @@ function Home() {
     try {
       const response = await Axios({
         method: "post",
-        url: "http://localhost:5000/findUrl",
+        url: "https://urlshortnerbackendnikhil.herokuapp.com/findUrl",
         data: { short: shortUrl },
       });
       console.log(response);

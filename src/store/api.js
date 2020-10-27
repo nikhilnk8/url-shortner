@@ -7,7 +7,7 @@ export const api_login = async (username, password) => {
     console.log(password);
     const response = await axios({
       method: "POST",
-      url: "http://localhost:5000/auth/login",
+      url: "http://https://urlshortnerbackendnikhil.herokuapp.com/auth/login",
       data: { username: username, password: password },
     });
     console.log(response.data);
@@ -23,7 +23,7 @@ export const get_user_posts = async () => {
   try {
     const response = await axios({
       method: "get",
-      url: "http://192.168.1.103:5000/createUrl",
+      url: "http://urlshortnerbackendnikhil.herokuapp.com/createUrl",
       data: {},
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
@@ -42,7 +42,7 @@ export const get_single_user_url = async (userId) => {
     // if (!userId) return;
     const response = await axios({
       method: "post",
-      url: "http://192.168.1.103:5000/getUrls",
+      url: "http://urlshortnerbackendnikhil.herokuapp.com/getUrls",
       data: { user: userId },
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
@@ -59,7 +59,7 @@ export const deleteUrl = async (urlId) => {
     if (!urlId) return;
     const response = await axios({
       method: "delete",
-      url: "http://192.168.1.103:5000/deleteUrl",
+      url: "http://urlshortnerbackendnikhil.herokuapp.com/deleteUrl",
       data: { _id: urlId },
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });

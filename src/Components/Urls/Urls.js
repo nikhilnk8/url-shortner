@@ -24,7 +24,7 @@ function Urls() {
   const getUrls = () => {
     Axios({
       method: "post",
-      url: "http://localhost:5000/getUrls",
+      url: "https://urlshortnerbackendnikhil.herokuapp.com/getUrls",
       data: { user: userId },
     }).then(({ data }) => {
       console.log(data);
@@ -41,7 +41,7 @@ function Urls() {
     let body = { user: userId, ...values, createdOn: Date.now() };
     const response = await Axios({
       method: "post",
-      url: "http://localhost:5000/createUrl",
+      url: "https://urlshortnerbackendnikhil.herokuapp.com/createUrl",
       data: { user: userId, ...body },
       headers: {
         authorization: `Bearer ${localStorage.token}`,
