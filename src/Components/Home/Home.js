@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Urls from "../Urls/Urls";
 import "./Home.scss";
 import * as ANTD from "antd";
-import copy from "copy-to-clipboard";
 
 function Home() {
   const [shortUrl, setShortUrl] = useState("");

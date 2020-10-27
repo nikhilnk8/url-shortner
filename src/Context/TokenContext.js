@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext } from "react";
 import { useJwt } from "react-jwt";
 
 export const TokenContext = createContext();

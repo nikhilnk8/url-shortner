@@ -18,6 +18,7 @@ function Urls() {
 
   useEffect(() => {
     getUrls();
+    // eslint-disable-next-line
   }, [userId]);
 
   const getUrls = () => {
@@ -46,7 +47,7 @@ function Urls() {
         authorization: `Bearer ${localStorage.token}`,
       },
     });
-    response.status == 200
+    response.status === 200
       ? message.success("URL Added Successfully")
       : message.error("Something went wrong");
     onFormSubmit();

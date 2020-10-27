@@ -8,7 +8,7 @@ function UrlCard({ _id, orignal, short, onRefresh, name }) {
   const DeleteUrl = async () => {
     let response = await deleteUrl(_id);
     console.log(response);
-    response.status == 200 ? onRefresh() : alert("Something Went Wrong");
+    response.status === 200 ? onRefresh() : alert("Something Went Wrong");
   };
 
   return (

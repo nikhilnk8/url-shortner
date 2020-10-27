@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { api_login, get_user_posts } from "../../store/api";
+import { api_login } from "../../store/api";
 import "./Login.css";
 import { Button } from "antd";
 
