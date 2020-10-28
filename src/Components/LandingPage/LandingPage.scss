@@ -12,22 +12,15 @@ $fontfamily: "Montserrat", sans-serif;
   box-sizing: border-box;
   margin: 5px;
   border-radius: 8px;
+  margin-top: 300px;
+  margin-left: 20px;
 }
 
-@mixin mobile {
-  width: 85%;
-}
-
-.home {
-  min-height: 100vh;
-}
-
-.home__goToLink {
-  margin-top: 20px;
+.url {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 5px;
+  //   min-height: 40vh;
   input {
     width: 500px;
     height: 50px;
@@ -36,6 +29,7 @@ $fontfamily: "Montserrat", sans-serif;
     border: 0;
     border: 1px solid rgb(134, 134, 134);
     padding-left: 20px;
+    margin-top: 300px;
   }
 
   button {
@@ -44,11 +38,14 @@ $fontfamily: "Montserrat", sans-serif;
 }
 
 @media (max-width: 768px) {
-  .home__goToLink {
-    margin-top: 20px;
-
+  .url {
     input {
-      @include mobile();
+      margin-top: 200px;
+      margin-left: 5px;
+    }
+    button {
+      margin-top: 200px;
+      margin-left: 5px;
     }
   }
 }

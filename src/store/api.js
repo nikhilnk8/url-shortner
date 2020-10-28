@@ -7,7 +7,7 @@ export const api_login = async (username, password) => {
     console.log(password);
     const response = await axios({
       method: "POST",
-      url: "http://https://urlshortnerbackendnikhil.herokuapp.com/auth/login",
+      url: "http://urlshortnerbackendnikhil.herokuapp.com/auth/login",
       data: { username: username, password: password },
     });
     console.log(response.data);
