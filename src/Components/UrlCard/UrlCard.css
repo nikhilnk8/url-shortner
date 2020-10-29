@@ -16,17 +16,20 @@
 }
 .urlcard__links p:nth-child(1) {
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-family: "Montserrat", sans-serif;
+  /* color: rgb(102, 102, 102); */
 }
 .urlcard__links p:nth-child(2) {
   overflow-wrap: break-word;
   word-wrap: break-word;
   width: 100%;
+  opacity: 0.5;
 }
 .urlcard__buttons {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
   flex: 1;
 }
 

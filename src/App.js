@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./App.scss";
 // import Login from "./Components/Login/Login";
 // import Urls from "./Components/Urls/Urls";
@@ -23,6 +23,11 @@ function App() {
     window.location.replace("http://localhost:3000/");
   };
 
+  window.onbeforeunload = function () {
+    localStorage.clear();
+    return "";
+  };
+
   return (
     <Router>
       <div className="App">
@@ -30,7 +35,15 @@ function App() {
           <div className="headingTitles">
             <p> NI.KHAPP</p>
             {decodedToken !== null ? (
-              <ANTD.Button onClick={LogOut}>logout</ANTD.Button>
+              <div className="logout">
+                <ANTD.Button
+                  type="ghost"
+                  style={{ color: "white" }}
+                  onClick={LogOut}
+                >
+                  Logout
+                </ANTD.Button>
+              </div>
             ) : null}
           </div>
         </header>
