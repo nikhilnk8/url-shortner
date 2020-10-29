@@ -28,6 +28,9 @@ function Home() {
 
   return (
     <div className="home">
+      {localStorage.token
+        ? null
+        : (window.location.href = "http://localhost:3000")}
       <div className="home__goToLink">
         <input
           placeholder="Enter a short link"

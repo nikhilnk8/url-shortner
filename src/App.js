@@ -20,7 +20,7 @@ function App() {
 
   const LogOut = () => {
     localStorage.clear();
-    window.location.reload();
+    window.location.replace("http://localhost:3000/");
   };
 
   return (

@@ -18,6 +18,7 @@ function Login() {
 
   const genToken = async () => {
     const got_token = await api_login(username, password);
+    window.location.reload();
     console.log(got_token);
   };
   console.log(decodedToken);
